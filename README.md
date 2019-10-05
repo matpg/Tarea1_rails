@@ -1,6 +1,6 @@
-<<<<<<< HEAD
+
 # ArquitecturaSistemasTarea1
-=======
+
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -8,13 +8,13 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version : 2.6.0
 
 * System dependencies
 
 * Configuration
 
-* Database creation
+* Database creation: PostgreSQL
 
 * Database initialization
 
@@ -22,7 +22,7 @@ Things you may want to cover:
 
 * Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+* Deployment instructions: heroku app deploy "tarea1railsbackend.herokuapp.com"
 
 * ...
->>>>>>> creacion app
+
