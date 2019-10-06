@@ -1,0 +1,6 @@
+heroku container:login
+heroku create -a appname
+heroku container:push web -a demotarea1
+heroku container:release web -a demotarea1
+heroku open
+go to the url
