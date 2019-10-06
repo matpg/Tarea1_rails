@@ -1,6 +1,9 @@
 heroku container:login
-heroku create -a appname
-heroku container:push web -a demotarea1
-heroku container:release web -a demotarea1
-heroku open
+heroku create -a tarea1railsbackend
+heroku container:push web -a tarea1railsbackend
+heroku container:release web -a tarea1railsbackend
+heroku addons:create heroku-postgresql -a tarea1railsbackend
+heroku run rake db:migrate -a tarea1railsbackend
+heroku run rake db:seed -a tarea1railsbackend
+heroku open -a 
 go to the url
