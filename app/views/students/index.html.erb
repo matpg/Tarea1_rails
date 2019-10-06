@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Alumnos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= User.find(student.user_id).name %></td>
+        <td><%= User.find(student.user_id).email %></td>
+        <td><%= link_to 'Ver', student %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

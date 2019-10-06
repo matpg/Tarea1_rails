@@ -1,0 +1,99 @@
+<p id="notice"><%= notice %></p>
+
+
+ <br><h1><%= @course.name %></h1><br>
+
+<% if Student.find_by(user_id: current_user[:id]) %>
+	<h2>Ranking profesores </h2>
+	<table>
+	  <thead>
+	    <tr>
+	      <th>Nombre</th>
+	      <th>Nota</th>
+	      <th></th>
+
+	    </tr>
+	  </thead>
+
+
+		<% @profesors.sort_by{|e| -e.ranking}.each do |p| %>
+			<tr>
+		        <td><%= User.find(p.user_id).name %></td>
+		        <td><%= p.ranking.to_s %></td>
+
+		        <td><%= link_to 'Ver', p %></td>
+
+		    </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+<% else %>
+	<h2>Profesores </h2>
+	<table>
+	  <thead>
+	    <tr>
+	      <th></th>
+	      <th></th>
+
+	    </tr>
+	  </thead>
+
+
+		<% @profesors.each do |p| %>
+			<tr>
+		        <td><%= User.find(p.user_id).name %></td>
+
+		        <td><%= link_to 'Ver', p %></td>
+
+		    </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+<% end %>
+
+<br><h2>Comentarios</h2>
+
+<% @course.comments.each do |comment| %>
+	<% tipo = '' %>
+
+	<% if Profesor.find_by(user_id: User.find(comment.user_id).id) %>
+		<% tipo = 'Profesor' %>
+	<% else %>
+		<% tipo = 'Alumno' %>
+	<% end %>
+
+	<h3>
+	    
+		<%= User.find(comment.user_id).name %> | <%= tipo %>
+	</h3>
+	 
+	<p>
+	    
+	    <%= comment.description %>
+	</p><br>
+<% end %>
+<% comenta = 0 %>
+<% for i in UserCourse.all %>
+	<% if i.course_id == @course.id && i.user_id == current_user.id %>
+		<% comenta = 1 %>
+	<% end %>
+<% end %>
+
+<% if comenta == 1 %>
+	<h2>Comentar</h2>
+	<%= form_with(model: [ @course, @course.comments.build ], local: true) do |form| %>
+
+	  <p>
+	    <%= form.label :description %><br>
+	    <%= form.text_area :description %>
+	  </p>
+	  <p>
+	    <%= form.submit %>
+	  </p>
+	<% end %>
+<% end %>
+
+<br>
+
+
+<br><br><%= link_to 'Back', courses_path %>

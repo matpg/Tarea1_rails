@@ -1,0 +1,104 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= User.find(@profesor[:user_id]).name %></h1>
+<h4><%= User.find(@profesor[:user_id]).email %></h4>
+
+<table>
+  <thead>
+    <tr>
+      	<th>Curso</th>
+      	<th>NRC</th>
+     	 <th></th>
+
+
+    </tr>
+  	</thead>
+  	<tbody>
+		<% @courses.each do |course| %>
+			<tr>
+				<td> <%= course.name %></td>
+				<td> <%= course.nrc %></td>
+				<td><%= link_to 'Ver curso', course %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<% evaluar = 0 %>
+<% prof = 0 %>
+
+<% if current_user.id == User.find(@profesor.user_id).id %>
+	<% prof = 1 %>
+<% end %>
+
+<% for i in UserCourse.all %>
+	<% nrc = 0 %>
+	<%if i.user_id == User.find(@profesor.user_id).id%>
+		<% id = i.course_id %>
+	<% end %>
+	<% for e in UserCourse.all %>
+
+		<%if e.course_id == id && e.user_id == current_user[:id] && e.user_id != i.user_id %>
+			<% evaluar = 1 %>
+		<% end %>
+	<% end %>
+
+<% end %>
+
+<% suma = 0%>
+<% ctda = 0 %>
+<% @profesor.evaluations.each do |e| %>
+	    
+	<% suma += e.mark %>
+	<% ctda += 1 %>
+  
+<% end %>
+
+<% promedio = 0 %>
+<% if ctda > 0.0 %>
+	<% promedio = suma/ctda %>
+<% end %>
+<h2>Evaluacion promedio: <%= promedio %> </h2> <br>
+
+<% if prof == 1 %>
+	<h2>Evaluaciones</h2>
+	<% @profesor.evaluations.each do |e| %>
+	    <h4><%= User.find(Student.find(e.student_id).user_id).name %></h4>
+
+	    <h5>Evaluación: <%= e.mark %></h5>
+
+		<p>
+		   <%= e.description %>
+		</p><br>
+
+	  
+	<% end %>
+<% end %>
+
+
+
+<% if evaluar == 1 %>
+ 
+	<h2>Evaluar</h2>
+	<%= form_with(model: [ @profesor, @profesor.evaluations.build ], local: true) do |form| %>
+	  <p>
+	  	<%= form.label :mark %><br>
+
+		<%= form.select(:mark, [1,2,3,4,5,6,7], {}) %>
+
+
+	  </p>
+	  <p>
+	    <%= form.label :description %><br>
+	    <%= form.text_area :description %>
+	  </p>
+	  <p>
+	    <%= form.submit %>
+	  </p>
+	<% end %>
+<% end %>
+
+  
+
+
+<%= link_to 'Back', profesors_path %>

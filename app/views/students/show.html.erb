@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= User.find(@student.user_id).name %></h1>
+<h4><%= User.find(@student.user_id).email %></h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Curso</th>
+      <th>NRC</th>
+      <th></th>
+
+
+    </tr>
+  </thead>
+<% @courses.each do |course| %>
+	<td> <%= course.name %></td>
+	<td> <%= course.nrc %></td>
+	<td><%= link_to 'Ver curso', course %></td>
+
+<% end %>

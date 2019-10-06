@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Profesores</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Email</th>
+
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @profesors.each do |profesor| %>
+      <tr>
+        <td><%= User.find(profesor.user_id).name %></td>
+        <td><%= User.find(profesor.user_id).email %></td>
+        <td><%= link_to 'Ver', profesor %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

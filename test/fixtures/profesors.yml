@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  ranking: 1
+  ev: 1
+
+two:
+  user: two
+  ranking: 1
+  ev: 1

@@ -5,11 +5,38 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+
+    <% if user_signed_in? %>
+      <% if Student.find_by(user_id: current_user[:id]) %>
+
+        <a href= <%= "http://localhost:3001/students/" + Student.find_by(user_id: current_user[:id]).id.to_s %>> Estudiante: <%=current_user.name %></a>
+      <% else %>
+        <a href= <%= "http://localhost:3001/profesors/" + Profesor.find_by(user_id: current_user[:id]).id.to_s %>> Docente: <%=current_user.name %></a>
+      <% end %>
+       | 
+
+      <a style="color:white"> <%= link_to(' Logout', destroy_user_session_path, method: :delete) %> </a>
+
+    <% else %>
+      <a>
+      <%= link_to('Login', new_user_session_path) %> 
+      </a>
+
+    <% end %>
+    |
+    <a href="http://localhost:3001/courses">Cursos</a>
+    |
+    <a href="http://localhost:3001/students">Alumnos</a>
+    |
+    <a href="http://localhost:3001/profesors">Profesores</a>
     <%= yield %>
   </body>
 </html>
