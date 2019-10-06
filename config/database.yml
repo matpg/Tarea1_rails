@@ -8,9 +8,9 @@ default: &default
 
 development:
   <<: *default
-  database: Tarea1_development
+  database: Tarea1_rails_development
 
 
 test:
   <<: *default
-  database: Tarea1_test
+  database: Tarea1_rails_test
