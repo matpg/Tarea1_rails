@@ -1,9 +1,14 @@
-heroku container:login
-heroku create -a tarea1railsbackend
-heroku container:push web -a tarea1railsbackend
-heroku container:release web -a tarea1railsbackend
-heroku addons:create heroku-postgresql -a tarea1railsbackend
-heroku run rake db:migrate -a tarea1railsbackend
-heroku run rake db:seed -a tarea1railsbackend
-heroku open -a 
-go to the url
+si existe o si está creada la pagina web de heroku:
+- Visitar la pagina http://tarea1railsbackend.herokuapp.com
+Si no existe o no se entra creada la pagina web de heroku:
+-$	heroku container:login
+-$	heroku create -a tarea1railsbackend
+-$	heroku container:push web -a tarea1railsbackend
+-$	heroku container:release web -a tarea1railsbackend
+-$	heroku addons:create heroku-postgresql -a tarea1railsbackend
+-$	heroku run rake db:migrate -a tarea1railsbackend
+-$	heroku run rake db:seed -a tarea1railsbackend
+-$	heroku open -a tarea1railsbackend
+- Visitar la pagina http://tarea1railsbackend.herokuapp.com
+
+la base de datos se encuentra en: DATABASE_URL: postgres://wolzgnfucxtiul:7335fdaacca566a24b8a44a2572782163b2e85187ada9b46dd2b899d6b04ec4f@ec2-174-129-27-158.compute-1.amazonaws.com:5432/dbtjrapk6ang4

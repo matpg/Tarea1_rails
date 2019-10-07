@@ -17,9 +17,9 @@
     <% if user_signed_in? %>
       <% if Student.find_by(user_id: current_user[:id]) %>
 
-        <a href= <%= "http://http://tarea1railsbackend.herokuapp.com/students/" + Student.find_by(user_id: current_user[:id]).id.to_s %>> Estudiante: <%=current_user.name %></a>
+        <a href= <%= "http://tarea1railsbackend.herokuapp.com/students/" + Student.find_by(user_id: current_user[:id]).id.to_s %>> Estudiante: <%=current_user.name %></a>
       <% else %>
-        <a href= <%= "http://http://tarea1railsbackend.herokuapp.com/profesors/" + Profesor.find_by(user_id: current_user[:id]).id.to_s %>> Docente: <%=current_user.name %></a>
+        <a href= <%= "http://tarea1railsbackend.herokuapp.com/profesors/" + Profesor.find_by(user_id: current_user[:id]).id.to_s %>> Docente: <%=current_user.name %></a>
       <% end %>
        | 
 
@@ -32,11 +32,11 @@
 
     <% end %>
     |
-    <a href="http://http://tarea1railsbackend.herokuapp.com/courses">Cursos</a>
+    <a href="http://tarea1railsbackend.herokuapp.com/courses">Cursos</a>
     |
-    <a href="http://http://tarea1railsbackend.herokuapp.com/students">Alumnos</a>
+    <a href="http://tarea1railsbackend.herokuapp.com/students">Alumnos</a>
     |
-    <a href="http://http://tarea1railsbackend.herokuapp.com/profesors">Profesores</a>
+    <a href="http://tarea1railsbackend.herokuapp.com/profesors">Profesores</a>
     <%= yield %>
   </body>
 </html>
