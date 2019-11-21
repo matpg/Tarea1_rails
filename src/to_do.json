@@ -1,0 +1,34 @@
+{
+  "todos": [
+    {
+      "title": "Task 1",
+      "responsible": "Mark",
+      "desc": "Lorem ipsum dolor sit amet",
+      "prio": "low"
+    },
+    {
+      "title": "Task 2",
+      "responsible": "Mario",
+      "desc": "Lorem ipsum dolor sit amet 2",
+      "prio": "medium"
+    },
+    {
+      "title": "Task 3",
+      "responsible": "Ryan",
+      "desc": "Lorem ipsum dolor sit amet 3",
+      "prio": "high"
+    },
+    {
+      "title": "Task 4",
+      "responsible": "Camilie",
+      "desc": "Lorem ipsum dolor sit amet 4",
+      "prio": "low"
+    },
+    {
+      "title": "Task 5",
+      "responsible": "Sam",
+      "desc": "Lorem ipsum dolor sit amet 4",
+      "prio": "extremely high"
+    }
+  ]
+}
